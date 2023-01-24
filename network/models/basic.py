@@ -43,3 +43,6 @@ class Basic(models.Model):
             self.created = timezone.now()
         self.updated = timezone.now()
         return super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.title

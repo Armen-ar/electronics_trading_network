@@ -4,7 +4,7 @@ from network.models.retail_network import Retail_network
 from network.serializers.retail_network import Retail_networkSerializer, Retail_networkEditSerializer
 
 
-class Retail_networkListView(generics.ListAPIView):
+class Retail_networkListCreateView(generics.ListCreateAPIView):
     queryset = Retail_network.objects.all()
     serializer_class = Retail_networkSerializer
 
@@ -14,11 +14,6 @@ class Retail_networkListView(generics.ListAPIView):
         if country is not None:
             queryset = queryset.filter(contacts__country=country)
         return queryset
-
-
-class Retail_networkCreateView(generics.CreateAPIView):
-    queryset = Retail_network.objects.all()
-    serializer_class = Retail_networkSerializer
 
 
 class Retail_networkView(generics.RetrieveUpdateDestroyAPIView):

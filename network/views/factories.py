@@ -3,7 +3,7 @@ from network.models.factory import Factory
 from network.serializers.factories import FactorySerializer, FactoryEditSerializer
 
 
-class FactoryListView(generics.ListAPIView):
+class FactoryListCreateView(generics.ListCreateAPIView):
     queryset = Factory.objects.all()
     serializer_class = FactorySerializer
 
@@ -13,11 +13,6 @@ class FactoryListView(generics.ListAPIView):
         if country is not None:
             queryset = queryset.filter(contacts__country=country)
         return queryset
-
-
-class FactoryCreateView(generics.CreateAPIView):
-    queryset = Factory.objects.all()
-    serializer_class = FactorySerializer
 
 
 class FactoryView(generics.RetrieveUpdateDestroyAPIView):

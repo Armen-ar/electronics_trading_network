@@ -19,3 +19,6 @@ class Products(models.Model):
     created = models.DateTimeField(
         verbose_name='Дата выхода продукта на рынок'
     )
+
+    def __str__(self):
+        return self.title

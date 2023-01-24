@@ -4,7 +4,7 @@ from network.models.private_trader import Private_trader
 from network.serializers.private_trader import Private_traderSerializer, Private_traderEditSerializer
 
 
-class Private_traderListView(generics.ListAPIView):
+class Private_traderListCreateView(generics.ListCreateAPIView):
     queryset = Private_trader.objects.all()
     serializer_class = Private_traderSerializer
 
@@ -14,11 +14,6 @@ class Private_traderListView(generics.ListAPIView):
         if country is not None:
             queryset = queryset.filter(contacts__country=country)
         return queryset
-
-
-class Private_traderCreateView(generics.CreateAPIView):
-    queryset = Private_trader.objects.all()
-    serializer_class = Private_traderSerializer
 
 
 class Private_traderView(generics.RetrieveUpdateDestroyAPIView):
